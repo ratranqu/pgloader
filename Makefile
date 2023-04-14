@@ -47,7 +47,8 @@ BUILDAPP      = $(BUILDAPP_SBCL)
 BUILDAPP_OPTS = --require sb-posix                      \
                 --require sb-bsd-sockets                \
                 --require sb-rotate-byte
-CL_OPTS    = --noinform --no-sysinit --no-userinit --dynamic-space-size $(DYNSIZE)
+#CL_OPTS    = --noinform --no-sysinit --no-userinit --dynamic-space-size $(DYNSIZE)
+CL_OPTS    = --no-sysinit --no-userinit --dynamic-space-size $(DYNSIZE)
 else
 BUILDAPP   = $(BUILDAPP_CCL)
 CL_OPTS    = --no-init
