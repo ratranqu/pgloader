@@ -172,7 +172,7 @@ test: $(PGLOADER)
 	$(MAKE) PGLOADER=$(realpath $(PGLOADER)) CL=$(CL) -C test regress
 
 save: ./src/save.lisp $(LISP_SRC)
-	$(CL) $(CL_OPTS) --load ./src/save.lisp
+	$(CL) $(CL_OPTS) --load ./src/save.lisp --dynamic-space-size $(DYNSIZE) 
 
 check-saved:
 	$(MAKE) PGLOADER=$(realpath $(PGLOADER)) CL=$(CL) -C test regress
