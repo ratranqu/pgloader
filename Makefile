@@ -47,7 +47,7 @@ BUILDAPP      = $(BUILDAPP_SBCL)
 BUILDAPP_OPTS = --require sb-posix                      \
                 --require sb-bsd-sockets                \
                 --require sb-rotate-byte
-CL_OPTS    = --noinform --no-sysinit --no-userinit --dynamic-space-size $(DYNSIZE)
+CL_OPTS    = --noinform --no-sysinit --no-userinit
 else
 BUILDAPP   = $(BUILDAPP_CCL)
 CL_OPTS    = --no-init
@@ -172,7 +172,7 @@ test: $(PGLOADER)
 	$(MAKE) PGLOADER=$(realpath $(PGLOADER)) CL=$(CL) -C test regress
 
 save: ./src/save.lisp $(LISP_SRC)
-	$(CL) $(CL_OPTS) --load ./src/save.lisp 
+	$(CL) $(CL_OPTS) --dynamic-space-size $(DYNSIZE) --load ./src/save.lisp 
 
 check-saved:
 	$(MAKE) PGLOADER=$(realpath $(PGLOADER)) CL=$(CL) -C test regress
